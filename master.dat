@@ -1,0 +1,86 @@
+## AndroidManifest.xml ##
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="<<PackageName>>.<<ClassName>>"
+    android:versionCode="1"
+    android:versionName="1.0.0" >
+
+    <application android:label="@string/app_name" >
+        <activity
+            android:name=".<<ClassName>>"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+## /AndroidManifest.xml ##
+
+## ClassName.java ##
+package <<PackageName>>.<<ClassName>>;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class <<ClassName>> extends Activity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.<<ContentLayout>>);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        TextView textView = (TextView) findViewById(R.id.text_view);
+        textView.setText("Hello world!");
+    }
+
+}
+## /ClassName.java ##
+
+## Build.gradle ##
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.7.+'
+    }
+}
+
+apply plugin: 'android'
+
+android {
+    buildToolsVersion "19.0.1"
+    compileSdkVersion 19
+}
+## /Build.gradle ##
+
+## classname_layout.xml ##
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView
+    android:id="@+id/text_view"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    />
+</LinearLayout>
+## /classname_layout.xml ##
+
+## strings.xml ##
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name"><<ClassName>></string>
+</resources>
+## /strings.xml ##
