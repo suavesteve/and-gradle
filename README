@@ -1,0 +1,31 @@
+Introduction:
+
+Android development is moving towards the Gradle build system, and away from the
+previously used Ant system; this has lead to a change build tree structure, which
+the previous Emacs Android modes cannot support - this mode is a basic attempt to
+create a set of Emacs functions to create, build and install basic Android projects
+with Emacs
+
+Useage:
+
+and-gradle-build-dir - This will create and populate the directory tree, as requried 
+		       by Gradle, it will request a project name and package-name 
+		       ("com.Example") unless and-gradle-project-package-name has been
+		       set
+
+and-gradle-build-project - This funcion will ask for the root directory of the project
+			   to be compiled; it will then use the Emacs compilation mode
+			   to ensure error highlighting is available; this will only
+			   build the apk files
+
+and-gradle-build-and-install-project - This will build, as mentioned previously, then
+				       use adb (ensure this is in path) to install
+				       and run the project
+
+TODO:
+
+Lots of work to do:
+     *	Allow for custom path to Android SDK tools
+     *	Test on a windows enviroment
+     *	Error handling
+
